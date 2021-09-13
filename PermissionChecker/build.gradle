@@ -34,6 +34,18 @@ android {
 dependencies {
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
+}
 
-
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.sequenia.PermissionChecker'
+                artifactId = 'checker'
+                version = '0.1'
+            }
+        }
+    }
 }
