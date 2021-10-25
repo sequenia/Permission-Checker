@@ -32,7 +32,9 @@ private fun checkPermissions() {
 }
 ```
 
-Можно обработать показ Rationale
+По [документации Google](https://developer.android.com/training/permissions/requesting#explain), пользователь может не понять для чего ему нужно разрешение, в таком случае (обычно после первого отклонения разрешения пользователем)
+необходимо показать rationale - объяенение пользователю   
+Этот случай обрабатывается библиотекой вызовом метода onShowRationale в DSL, его вызов не обязателен, но если он был вызван, то в случае принятия пользователем объяснения, нужно **обязательно** вызвать метод acceptRationale чтобы продолжить запрос разрешения
 ```kotlin
 private fun checkPermissions() {
     val permissions = arrayOf(
